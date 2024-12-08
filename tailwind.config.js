@@ -5,7 +5,36 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      extend: {
+        screens: {
+          "330size": "330px",
+          "360size": "360px",
+          "400size": "400px",
+          "500size": "500px",
+          "580size": "580px",
+          "600size": "600px",
+          "700size": "700px",
+          "800size": "800px",
+          "870size": "870px",
+          "900size": "900px",
+          "1000size": "1000px",
+          "1100size": "1100px",
+          "1220size" : "1220px",
+          "1460size" : "1460px",
+          "1700size" : "1700px",
+          "1920size" : "1920px"
+        },
+        colors: {
+          "custom-dark-1" : "#070c13",
+          "custom-dark-2" : "#141D2B",
+          "custom-gray-1" : "#888888",
+          "custom-gray-2" : "#DADADA",
+          "custom-gray-3" : "#A1A1A1",
+          "custom-gray-4" : "#AEAEAE",
+        }
+      },
+    },
   },
   plugins: [],
 }

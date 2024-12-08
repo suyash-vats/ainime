@@ -42,7 +42,7 @@ export const Navbar = ( { active } : NavBarProps ) => {
                onClick={() => navigate("/")}
             >
                 ANIME
-                <span className="text-xl 360size:text-2xl text-custom-blue-1">STREAMER</span>
+                <span className="text-xl 360size:text-2xl text-custom-gray-1">STREAMER</span>
             </p>
 
           
