@@ -1,32 +1,57 @@
 import { Routes, Route } from "react-router-dom"
 import { HomePage } from "./pages/homepage/home"
+import { TrendingPage } from "./pages/trendingPage/trendingPage"
+import { LatestPage } from "./pages/latestPage/latestPage"
+import { PopularPage } from "./pages/popularSection/popular"
+import { SearchPage } from "./helpers/SearchPage"
+import { SelectedPage } from "./pages/selectedPage/selectedPage"
+import { Watch } from "./pages/watchPage/watchPage"
+import { ScrollToTop } from "./helpers/ScrollToTop"
+import { BookMarks } from "./pages/bookMarks/bookMarks"
+import { ToastContainer } from "react-toastify"
+import { NotFoundPage } from "./helpers/NotFoundPage"
+import "react-toastify/dist/ReactToastify.css"
+import { animeStore } from "./store/animeStore"
 
 function App() {
-  const [count, setCount] = useState(0)
+  const {isCheckedTheme} = animeStore()
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className={`custom-transition-duration ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+      <ScrollToTop/>
+      <Routes>
+        {/* Main Pages */}
+        <Route path="/" element={<HomePage/>}/>
+        <Route path="/Trending" element={<TrendingPage/>}/>
+        <Route path="/Latest" element={<LatestPage/>}/>
+        <Route path="/Popular" element={<PopularPage/>}/>
+        <Route path="/Bookmarks" element={<BookMarks/>}/>
+
+        {/* Selected Data */}
+        <Route path="/Anime/:dataId" element={<SelectedPage/>}/>
+
+        {/* Watch Data */}
+        <Route path="/Watch/:dataId/:episodeId" element={<Watch/>}/>
+
+        {/* Helpers */}
+        <Route path="/Search" element={<SearchPage/>}/>
+        <Route path="*" element={<NotFoundPage/>}/>
+      </Routes>
+
+      {/* Toast Container */}
+      <ToastContainer
+        position='bottom-left'
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme='colored'
+      />
+    </div>
   )
 }
 
