@@ -8,7 +8,7 @@ export type animeDataType = {
     id: string
     title: string
     url: string
-    genres: string
+    genres: string[]
     totalEpisodes: number
     image: string
     releaseDate: string

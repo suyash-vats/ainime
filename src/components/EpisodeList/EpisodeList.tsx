@@ -156,7 +156,7 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
               All Episodes
             </h1>
 
-            <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-blue-1 pb-5 gap-x-10 mt-4 lg:mt-2">
+            <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-gray-1 pb-5 gap-x-10 mt-4 lg:mt-2">
                 <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>
                     Unwind and savor the pleasure of watching your favorite shows for a relaxing and enjoyable experience.
                 </p>

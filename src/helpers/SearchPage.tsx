@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react"
-import { ListContainer } from "../components/AnimeList/ListContainer"
+import { ListContainer } from "../components/AnimeList/AnimeListContainer"
 import { Footer } from "../components/Footer/Footer"
 import { Navbar } from "../components/Navbar/Navbar"
 import { animeStore } from "../store/animeStore"

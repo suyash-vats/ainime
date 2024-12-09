@@ -1,17 +1,18 @@
-import { animeStore, useMyListDataPersist } from "../../store/animeStore";
-import { useEffect, useState } from "react";
-import { SkeletonLoading } from "../Skeleton/Loading";
-import { ItemListType } from "../../types/itemTypes";
-import {AnimeItemList} from "../Anime/AnimeItemList"
+import { animeStore, useMyListDataPersist } from "../../store/animeStore"
+import { useEffect, useState } from "react"
+import { SkeletonLoading } from "../Skeleton/Loading"
+import { AnimeItem } from "../Anime/AnimeItem"
+import { ItemListType } from "../../types/itemTypes"
 
-type MyListContainerProps = {
-    title : string
+type MyAnimeListContainerProps = {
+  title : string
   description : string
   spacing? : string
   hasSeeAll? : boolean
 }
 
-export const MyListContainer = ({title, description, spacing} : MyListContainerProps) => {
+export const MyAnimeListContainer = ({ title, description, spacing } : MyAnimeListContainerProps) => {
+    // Theme Toggle
     const {isCheckedTheme} = animeStore()
 
     // My list Storage Data
@@ -19,7 +20,6 @@ export const MyListContainer = ({title, description, spacing} : MyListContainerP
 
     // Setting timeout for skeleton
     const [isLoading, setIsLoading] = useState<boolean>(true)
-
     useEffect(() => {
       setIsLoading(true)
       if(myListDetails){
@@ -29,8 +29,9 @@ export const MyListContainer = ({title, description, spacing} : MyListContainerP
         return () => clearTimeout(timer)
       }
     }, [])
-    return (
-        <section className={`min-h-[50rem] w-full custom-transition-duration pb-20 lg:pb-0 ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+           
+  return (
+    <section className={`min-h-[50rem] w-full custom-transition-duration pb-20 lg:pb-0 ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
         <div className={`max-w-[80%] sm:max-w-none w-10/12 mx-auto relative ${spacing}`}>
 
             {/* Headers */}
@@ -58,7 +59,7 @@ export const MyListContainer = ({title, description, spacing} : MyListContainerP
                     </div>
                   :
                   myListDetails.map((res: ItemListType) => (
-                    <AnimeItemList
+                    <AnimeItem
                       key = {res?.animeId}
                       id = {res?.animeId}
                       title = {res?.animeName}
@@ -70,5 +71,5 @@ export const MyListContainer = ({title, description, spacing} : MyListContainerP
             </div>
         </div>
     </section>
-    );
-};
+  )
+}
