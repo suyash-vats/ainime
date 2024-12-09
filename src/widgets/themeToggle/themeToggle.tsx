@@ -1,6 +1,6 @@
 import { useEffect } from "react"
 import { animeStore } from "../../store/animeStore"
-import "./ThemeToggle.css"
+import "./themeToggle.css"
 
 export const ThemeToggle = () => {
     // Theme Toggle
