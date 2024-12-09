@@ -1,5 +1,5 @@
 import { useState, ChangeEvent, FormEvent } from "react"
-import { ListContainer } from "../components/AnimeList/AnimeListContainer"
+import { AnimeListContainer } from "../components/AnimeList/AnimeListContainer"
 import { Footer } from "../components/Footer/Footer"
 import { Navbar } from "../components/Navbar/Navbar"
 import { animeStore } from "../store/animeStore"
@@ -84,7 +84,7 @@ export const SearchPage = () => {
     
         {!hasSearch ? 
             // Trending Now Section
-            <ListContainer 
+            <AnimeListContainer 
               fetchCategory = "top-airing"
               type = "Trending"
               title = "Top Searches"
@@ -93,7 +93,7 @@ export const SearchPage = () => {
             />
             :
             // Seach Results Section
-            <ListContainer 
+            <AnimeListContainer 
               fetchCategory = {animeName}
               type = "Search"
               title = "Results:"

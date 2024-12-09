@@ -7,7 +7,7 @@ export const HamburgerMenu = () => {
   const {isCheckedTheme} = animeStore();
 
   const [isOpen, setIsOpen] = useState(false);
-  const handleCheckboxChange = (e: MouseEvent<HTMLInputElement>) => {
+  const handleCheckboxChange = () => {
     setIsOpen(!isOpen);
   }
 
