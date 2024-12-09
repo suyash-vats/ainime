@@ -1,7 +1,7 @@
 import { useState, MouseEvent } from "react";
 import { NavlinksSmall } from "../../components/Navbar/components/navLinkSmall";
 import { animeStore } from "../../store/animeStore";
-import "./HambugerMenu.css";
+import "./HamburgerMenu.css"
 
 export const HamburgerMenu = () => {
   const {isCheckedTheme} = animeStore();
