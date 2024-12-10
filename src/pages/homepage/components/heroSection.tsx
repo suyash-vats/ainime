@@ -57,7 +57,11 @@ export const HeroSection = () => {
     <div 
         className="lg:pb-[26rem] custom-gradient-bg-dark flex" 
         style={{
-            background: `linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%), url(${dataArray?.image})`,
+            background: `radial-gradient(40.56% 36.62% at 63.93% 48.85%, 
+              rgba(149, 149, 149, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%), 
+              linear-gradient(0deg, ${isCheckedTheme ? 'rgba(7, 13, 17, 0.95)' : 'rgba(255, 255, 255, 0.90)'} 0%, 
+              ${isCheckedTheme ? 'rgba(7, 13, 17, 0.95)' : 'rgba(255, 255, 255, 0.90)'} 100%), 
+              url(${dataArray?.image}) no-repeat lightgray 70% / cover`,
         }}
     >
         <div className="max-w-[80%] sm:max-w-none w-10/12 mx-auto mt-[5rem] lg:mt-[11rem] lg:flex gap-x-20">
