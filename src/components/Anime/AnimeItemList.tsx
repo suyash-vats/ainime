@@ -38,7 +38,7 @@ export const AnimeItemList = ({id, title, image, episodeNumber} : AnimeItemListP
 
                 {/* Name */}
                 <p className={`text-base font-semibold mt-2 custom-transition-duration text-center 
-                    sm:text-left ${isCheckedTheme ? 'text-white' : 'text-black'}`}
+                    sm:text-left ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
                 >
                     {title}
                 </p>

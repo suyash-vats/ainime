@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { animeStore } from "../../../store/animeStore"
 import { useNavigate } from "react-router-dom"
 import { Skeleton } from "../../../components/Skeleton/ShadcnType"
-
 import { Player } from "../../../components/VideoPlayer/Player"
 import { saveUserEpisodeData } from "../../../helpers/data"
 
@@ -53,6 +52,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
         const vidstreamingUrl = episodeData?.find((item) => item?.name === "Vidstreaming")
         const gogoServerUrl = episodeData?.find((item) => item?.name === "Gogo server")
         const streamwishUrl = episodeData?.find((item) => item?.name === "Streamwish")
+       
 
         if (filelionsUrl) {
             setServerName("Filelions")
@@ -76,7 +76,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
         }
     }, [episodeData, currentEpisode])
 
-
+    // Trigger Every Time this data changed -> episodeData, urlValue, isLoading, serverName
     useEffect(() => {
         const filelionsUrl = episodeData?.find((item) => item?.name === 'Filelions')
         const vidstreamingUrl = episodeData?.find((item) => item?.name === "Vidstreaming")
@@ -101,15 +101,15 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
             setServerName("Streamwish")
             setFrameUrl(streamwishUrl?.url || '')
         } 
-       
+        
         else {
             setFrameUrl(episodeData && episodeData[0]?.url)
         }
     },[episodeData, urlValue, isLoading, serverName])
 
-    console.log(episodeData)
+    
 
-    // Loading Skeleton
+   
     const [loader, setLoader] = useState<boolean>(true)
     useEffect(() => {
         if(isLoading || loader){
@@ -119,6 +119,32 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
             return () => clearTimeout(timer)
         }
     },[loader, isLoading])
+
+    // Iframe Ref
+    const iframeRef = useRef<HTMLIFrameElement | null>(null)
+
+    // To Full Screen Iframe
+    const handleFullscreen = () => {
+        if (iframeRef.current) {
+          const iframe = iframeRef.current
+    
+          if (iframe.requestFullscreen) {
+            iframe.requestFullscreen()
+          } 
+          else if ((iframe as unknown as HTMLIFrameElement & { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen) {
+            (iframe as unknown as HTMLIFrameElement & { webkitRequestFullscreen?: () => void }).webkitRequestFullscreen!()
+          } 
+          else if ((iframe as unknown as HTMLIFrameElement & { mozRequestFullScreen?: () => void }).mozRequestFullScreen) {
+            (iframe as unknown as HTMLIFrameElement & { mozRequestFullScreen?: () => void }).mozRequestFullScreen!()
+          } 
+          else if ((iframe as unknown as HTMLIFrameElement & { msRequestFullscreen?: () => void }).msRequestFullscreen) {
+            (iframe as unknown as HTMLIFrameElement & { msRequestFullscreen?: () => void }).msRequestFullscreen!()
+          }
+        }
+    }
+
+    // Get User's Operating System
+    const operatingSystem = navigator.platform
 
     // Pagination Controller -> Trigger Next Page
     const nextPage = () => {
@@ -147,7 +173,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
 
         <div className="mb-10 max-w-[80%] sm:max-w-none w-10/12 mx-auto">
             <p 
-                className={`text-lg float-left mb-4 cursor-pointer ${isCheckedTheme ? 'text-white' : 'text-black'}
+                className={`text-lg float-left mb-4 cursor-pointer ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}
                 hover:underline hover:text-custom-blue-1 disable-highlight active:scale-95 custom-transition-duration`}
                 onClick={() => navigate(-1)}
             >
@@ -155,12 +181,23 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
             </p>
 
             <div className="flex flex-wrap sm:justify-between xl:justify-start 1460size:justify-between gap-3 w-[100%] 1460size:max-w-[45rem] clear-both">
+                {/* Allow Fulls Screen */
+                operatingSystem.includes("Win") &&
+                    <button 
+                        onClick={handleFullscreen}
+                        className={`text-gray-500  bg-custom-dark-2 py-2 rounded-md w-full 500size:w-[10rem] 
+                            disable-highlight custom-transition-duration sm:hover:bg-custom-dark-1 
+                            active:scale-95 whitespace-nowrap ${isLoading ? 'invisible' : 'visible'}`}
+                    >
+                      Allow Fullscreen
+                    </button>
+                }
                 
-                <div className="flex flex-wrap sm:justify-end gap-3 w-full 500size:w-auto">
+                <div className="flex flex-row sm:justify-end gap-3 w-full lg:w-80 500size:w-auto">
                     {/* Prev Button */
                     currentEpisode !== 1 &&
                         <button 
-                            className={`text-white bg-custom-blue-1 py-2 rounded-md w-full 500size:w-[10rem] 
+                            className={`${isCheckedTheme ? 'text-black' : 'text-white'}  bg-blue-500 py-2 rounded-md w-full 500size:w-[10rem] 
                                 disable-highlight custom-transition-duration sm:hover:bg-custom-dark-2 
                                 active:scale-95 whitespace-nowrap ${isLoading && 'pointer-events-none opacity-80'}`}
                             onClick={prevPage}
@@ -172,7 +209,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                     {/* Next Button */
                     animeData?.totalEpisodes !== currentEpisode &&
                         <button 
-                          className={`text-white bg-custom-blue-1 py-2 rounded-md w-full 500size:w-[10rem] 
+                          className={`${isCheckedTheme ? 'text-black' : 'text-white'} bg-blue-500 py-2 rounded-md w-full 500size:w-[10rem] 
                               disable-highlight custom-transition-duration sm:hover:bg-custom-dark-2 
                               active:scale-95 whitespace-nowrap ${isLoading && 'pointer-events-none opacity-80'}`}
                             onClick={nextPage}
@@ -199,6 +236,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                 <Player 
                    dataUrl = {frameUrl} 
                    serverName = {serverName}
+                   iframeRef = {iframeRef} 
                    frameStyle = {isLoading || loader ? 'hidden' : 'block'}
                 />
 
@@ -214,14 +252,14 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                 <div className="mt-5 xl:mt-0 xl:mb-4">
                     {/* Episode Number */
                     animeData?.type !== "MOVIE" &&
-                        <p className={`text-xl font-semibold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-xl font-semibold custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Episode {currentEpisode}
                         </p>
                     }
 
                     {/* Title */}
                     <p className={`text-2xl sm:text-3xl md:text-4xl mt-4 custom-font-rocksalt custom-transition-duration
-                        ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                        ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-1'}`
                         }
                     >
                         {animeData?.title}
@@ -230,39 +268,39 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                     {/* Other Details */}
                     <div className="clear-both mt-10 flex flex-col gap-y-5">
                         {/* Rating */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Rating :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>
                                 {fakeRating}
                             </span>
                         </p>
                         {/* Release Date */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Year :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>
                                 {animeData?.releaseDate}
                             </span>
                         </p>
                         {/* Episodes */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             {animeData?.type !== "MOVIE" ? `Total Episodes` : `Type`} :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>
                                 {animeData?.type !== "MOVIE" ? animeData?.totalEpisodes : animeData?.type.charAt(0)+animeData?.type.slice(1).toLowerCase()}
                             </span>
                         </p>
                         {/* Status */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Status :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {animeData?.status}
                             </span>
                         </p>
 
                         {/* Genres */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Genres : &nbsp;
                             {animeData?.genres && animeData?.genres.map((genre : string, index : number) => (
-                                <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                                <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>
                                     {genre}
                                     {index !== animeData?.genres.length - 1 && `, `}
                                 </span>
@@ -271,13 +309,13 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
 
                         {/* Available Servers */}
                         <div className="mt-6">
-                            <p className={`text-lg font-bold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>Available Servers</p>
+                            <p className={`text-lg font-bold custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>Available Servers</p>
                             <div className="flex flex-wrap mt-4 gap-5">
                                 {episodeData && episodeData.map((res, index : number) => (
                                 (res.name !== "Mp4Upload") &&
                                     <div key={index} className={`rounded text-xs 400size:text-sm py-2 px-5 flex justify-center disable-highlight 
-                                        cursor-pointer hover:opacity-90 active:scale-95 text-white
-                                        ${serverName === res?.name ? 'bg-blue-950' : 'bg-[#141D2B]'}
+                                        cursor-pointer hover:opacity-90 active:scale-95 text-gray-500 
+                                        ${serverName === res?.name ? 'bg-custom-blue-1' : 'bg-[#1d2b41]'}
                                         `}
                                         onClick={() => { setServerName(res?.name); setUrlValue(res?.url) ; setLoader(!loader) }}
                                     >
@@ -307,7 +345,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                 :
                 <>
                     <p className={`text-base custom-transition-duration clear-both 
-                            ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                            ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
                         {displayedText}
@@ -318,7 +356,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                         <p onClick={toggleDescription } 
                             className={`mt-5 xl:mt-3 text-base custom-transition-duration
                             w-[7.2rem] cursor-pointer hover:sm:text-custom-blue-1 hover:sm:underline
-                            active:scale-95 ${isCheckedTheme ? 'text-white' : 'text-black'}`}
+                            active:scale-95 ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
                         >
                             {shouldTrim && !showFullDescription && !showSeeLess ? 'Read more 👇' : 'See less ☝️'}
                         </p>

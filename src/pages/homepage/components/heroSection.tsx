@@ -77,13 +77,13 @@ export const HeroSection = () => {
             <div className="mt-0 lg:mt-4">
                 <p className={`text-2xl sm:text-3xl md:text-4xl text-center 
                     lg:text-left mt-10 lg:mt-0 custom-font-rocksalt custom-transition-duration
-                    ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                    ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                     }
                 >
                     {dataArray?.title}
                 </p>
                 <p className={`text-center lg:text-left text-base mt-5 max-w-[60rem] custom-transition-duration
-                        ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                        ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                     }
                 >
                     {displayedText}
@@ -94,7 +94,7 @@ export const HeroSection = () => {
                     <p onClick={toggleDescription } 
                         className={`mt-5 lg:mt-3 text-base text-center mx-auto lg:mx-0 lg:text-left 
                         w-[7.2rem] cursor-pointer custom-transition-duration hover:sm:text-custom-gray-1
-                        hover:sm:underline active:scale-95 ${isCheckedTheme ? 'text-white' : 'text-black'}`}
+                        hover:sm:underline active:scale-95 ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
                     >
                         {shouldTrim && !showFullDescription && !showSeeLess ? 'Read more 👇' : 'See less ☝️'}
                     </p>
@@ -104,7 +104,7 @@ export const HeroSection = () => {
                 <div className="clear-both mt-10 lg:mt-12 flex flex-col sm:flex-row sm:justify-center gap-5 lg:float-left">
                     <Button
                         value = "Watch"
-                        bgColor = "bg-custom-gray-1"
+                        bgColor = "bg-white"
                         shadeColor = "bg-[#0B3D85]"
                         icon = {playIcon}
                         onClick = {()=> navigate(`Anime/${dataArray?.id}`)}
@@ -112,7 +112,7 @@ export const HeroSection = () => {
 
                     <Button
                         value = "Add to list"
-                        bgColor = "bg-[#111111]"
+                        bgColor = "bg-white"
                         shadeColor = "bg-[#141D2B]"
                         icon = {bookMark}
                         onClick={() => addBookMark(dataArray?.id || "", dataArray?.title || "", dataArray?.realImage ? dataArray?.realImage : dataArray?.image || "",  dataArray?.totalEpisodes || 0)}
@@ -122,30 +122,30 @@ export const HeroSection = () => {
                 {/* Other Details */}
                 <div className="clear-both mt-14 mb-28 lg:mb-0 lg:mt-[9rem] flex flex-wrap justify-center lg:justify-start gap-x-10 gap-y-2">
                     <p className={`text-base custom-transition-duration 
-                            ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                            ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
-                        Rating : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>{dataArray?.rating}</span>
+                        Rating : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>{dataArray?.rating}</span>
                     </p>
                     <p className={`text-base custom-transition-duration 
-                            ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                            ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
-                        Year : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>{dataArray?.releaseDate}</span>
+                        Year : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>{dataArray?.releaseDate}</span>
                     </p>
                     <p className={`text-base custom-transition-duration 
-                            ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                            ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
-                        Type : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>{dataArray?.type}</span>
+                        Type : <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>{dataArray?.type}</span>
                     </p>
                     <p className={`text-base custom-transition-duration 
-                            ${isCheckedTheme ? 'text-white' : 'text-black'} text-center lg:text-left`
+                            ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'} text-center lg:text-left`
                         }
                     >
                         Genres : &nbsp;
                         {dataArray?.genres && dataArray?.genres.map((genre, index) => (
-                            <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {genre}
                                 {index !== dataArray?.genres.length - 1 && `, `}
                             </span>

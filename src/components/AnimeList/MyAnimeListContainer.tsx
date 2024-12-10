@@ -36,13 +36,13 @@ export const MyAnimeListContainer = ({ title, description, spacing } : MyAnimeLi
 
             {/* Headers */}
             <h1 className={`text-4xl font-semibold text-center lg:text-left pt-10 lg:pt-0 
-              custom-transition-duration ${isCheckedTheme ? 'text-gray-400 ' : 'text-black'}`}
+              custom-transition-duration ${isCheckedTheme ? 'text-gray-500  ' : 'text-black'}`}
             >
               {title}
             </h1>
 
             <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-gray-1 pb-5 gap-x-10 mt-4 lg:mt-0">
-                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-gray-400' : 'text-black'}`}>
+                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                   {description}
                 </p>
             </div>

@@ -61,7 +61,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
 
         <div className="mb-16 max-w-[80%] sm:max-w-none w-10/12 mx-auto">
             <p 
-                className={`text-lg float-left cursor-pointer ${isCheckedTheme ? 'text-white' : 'text-black'}
+                className={`text-lg float-left cursor-pointer ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}
                 hover:underline hover:text-custom-blue-1 disable-highlight active:scale-95 custom-transition-duration`}
                 onClick={() => navigate(-1)}
             >
@@ -96,7 +96,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
                     {/* Title */}
                     <p className={`text-2xl sm:text-3xl md:text-4xl text-center
                         lg:text-left mt-10 lg:mt-0 custom-font-rocksalt custom-transition-duration
-                        ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                        ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
                         {animeData?.title}
@@ -105,40 +105,40 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
                     {/* Other Details */}
                     <div className="clear-both mt-10 flex flex-wrap justify-center lg:justify-start gap-x-10 gap-y-2">
                         {/* Rating */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Rating :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>
                                 {fakeRating}
                             </span>
                         </p>
                         {/* Release Date */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Year :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {animeData?.releaseDate}
                             </span>
                         </p>
                         {/* Episodes */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             {animeData?.type !== "MOVIE" ? `Total Episodes` : `Type`} :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {animeData?.type !== "MOVIE" ? animeData?.totalEpisodes : animeData?.type.charAt(0)+animeData?.type.slice(1).toLowerCase()}
                             </span>
                         </p>
                         {/* Status */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                             Status :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {animeData?.status}
                             </span>
                         </p>
                     </div>
                     
                     {/* Genres */}
-                    <p className={`text-base custom-transition-duration mt-2 ${isCheckedTheme ? 'text-white' : 'text-black'} text-center lg:text-left`}>
+                    <p className={`text-base custom-transition-duration mt-2 ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'} text-center lg:text-left`}>
                         Genres : &nbsp;
                         {animeData?.genres && animeData?.genres.map((genre : string, index : number) => (
-                            <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+                            <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                                 {genre}
                                 {index !== animeData?.genres.length - 1 && `, `}
                             </span>
@@ -149,7 +149,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
                     <div className="clear-both mt-10 mb-7 flex flex-col sm:flex-row sm:justify-center gap-5 lg:float-left">
                         <Button
                             value = "Watch"
-                            bgColor = "bg-custom-blue-1"
+                                        bgColor = "bg-white"
                             shadeColor = "bg-[#0B3D85]"
                             icon = {playIcon}
                             onClick={() => {saveUserEpisodeData(animeData?.id, lastWatchedEpisode); navigate(`/watch/${animeData?.id}/${animeData?.id}-episode-${lastWatchedEpisode}`)}}
@@ -157,7 +157,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
 
                         <Button
                             value = "Add to list"
-                            bgColor = "bg-[#111111]"
+                                        bgColor = "bg-white"
                             shadeColor = "bg-[#141D2B]"
                             icon = {bookmark}
                             onClick={() => addBookMark(animeData?.id || "", animeData?.title || "", animeData?.image || "", animeData?.totalEpisodes || 0)}
@@ -166,7 +166,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
 
                     {/* Description */}
                     <p className={`text-center lg:text-left text-base max-w-[60rem] custom-transition-duration
-                            clear-both ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                            clear-both ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                         }
                     >
                         {displayedText}
@@ -177,7 +177,7 @@ export const SelectedPageSection = ( { animeData, fakeRating, isLoading } : Sele
                         <p onClick={toggleDescription } 
                             className={`mt-5 lg:mt-3 text-base text-center mx-auto lg:mx-0 lg:text-left 
                             w-[7.2rem] cursor-pointer custom-transition-duration hover:sm:text-custom-blue-1
-                            hover:sm:underline active:scale-95 ${isCheckedTheme ? 'text-white' : 'text-black'}`}
+                            hover:sm:underline active:scale-95 ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
                         >
                             {shouldTrim && !showFullDescription && !showSeeLess ? 'Read more 👇' : 'See less ☝️'}
                         </p>

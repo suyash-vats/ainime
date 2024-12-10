@@ -113,13 +113,13 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
 
             {/* Headers */}
             <h1 className={`text-4xl font-semibold text-center lg:text-left pt-10 lg:pt-0 
-              custom-transition-duration ${isCheckedTheme ? 'text-white ' : 'text-black'}`}
+              custom-transition-duration ${isCheckedTheme ? 'text-gray-500  ' : 'text-black'}`}
             >
               {title}
             </h1>
 
             <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-gray-1 pb-5 gap-x-10 mt-4 lg:mt-0">
-                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-white ' : 'text-black'}`}>
+                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-gray-500  ' : 'text-black'}`}>
                   {description}
                 </p>
 
@@ -137,7 +137,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                   <div className="flex gap-x-3 mt-4 lg:mt-[-.50rem]">
                     {/* Prev Button */}
                     <button 
-                      className={`text-white bg-custom-dark-2 px-5 py-2 rounded-md 
+                      className={`text-gray-500  bg-custom-dark-2 px-5 py-2 rounded-md 
                         disable-highlight custom-transition-duration md:hover:bg-custom-gray-1 
                         active:scale-95 whitespace-nowrap ${pageParams?.firstParams === 1 && 'opacity-30 pointer-events-none'}`}
                       onClick={prevPage}
@@ -146,7 +146,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                     </button>
                     {/* Next Button */}
                     <button 
-                      className={`text-white bg-custom-dark-2 px-5 py-2 rounded-md 
+                      className={`text-gray-500  bg-custom-dark-2 px-5 py-2 rounded-md 
                         disable-highlight custom-transition-duration md:hover:bg-custom-gray-1 
                         active:scale-95 whitespace-nowrap ${
                           (!dataPage1 || !dataPage1.hasNextPage) || (!dataPage2 || !dataPage2.hasNextPage) 
@@ -169,7 +169,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                   :
                   combinedData?.results.length === 0 ?
                     <div className="w-full absolute">
-                      <p className={`text-base ${isCheckedTheme ? 'text-white ' : 'text-black'}`}>No data found for "{fetchCategory}".</p>
+                      <p className={`text-base ${isCheckedTheme ? 'text-gray-500  ' : 'text-black'}`}>No data found for "{fetchCategory}".</p>
                     </div>
                   :
                   combinedData?.results?.map((res: ItemType) => (
@@ -191,7 +191,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
               <div className="flex flex-wrap justify-center md:justify-end gap-3 mt-10">
                 {/* Prev Button */}
                 <button 
-                  className={`text-white bg-custom-gray-1 px-5 py-2 rounded-md 
+                  className={`text-gray-500  bg-custom-gray-1 px-5 py-2 rounded-md 
                         disable-highlight custom-transition-duration hover:bg-custom-dark-2 
                         active:scale-95 whitespace-nowrap ${pageParams?.firstParams === 1 && 'opacity-30 pointer-events-none'}`}
                   onClick={prevPage}
@@ -200,7 +200,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                 </button>
                 {/* Next Button */}
                 <button 
-                  className={`text-white bg-custom-gray-1 px-5 py-2 rounded-md 
+                  className={`text-gray-500  bg-custom-gray-1 px-5 py-2 rounded-md 
                       disable-highlight custom-transition-duration hover:bg-custom-dark-2 
                       active:scale-95 whitespace-nowrap ${
                         (!dataPage1 || !dataPage1.hasNextPage) || (!dataPage2 || !dataPage2.hasNextPage) 

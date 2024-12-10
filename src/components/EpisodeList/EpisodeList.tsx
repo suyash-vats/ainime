@@ -167,7 +167,7 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                       <select 
                         value={selectedRange} 
                         onChange={handleRangeChange} 
-                        className="text-white bg-custom-dark-2 px-5 py-2 rounded-md disable-highlight cursor-pointer whitespace-nowrap outline-none w-full 330size:w-auto"
+                        className="text-gray-500  bg-black px-5 py-2 rounded-md disable-highlight cursor-pointer whitespace-nowrap outline-none w-full 330size:w-auto"
                       >
                         {ranges.map((range, index) => (
                           <option key={index} value={range}>
@@ -182,7 +182,7 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                       <select 
                         value={selectedSort} 
                         onChange={handleSortChange} 
-                        className="text-white bg-custom-dark-2 px-5 py-2 rounded-md disable-highlight cursor-pointer whitespace-nowrap outline-none w-full 330size:w-auto"
+                        className="text-gray-500   bg-black px-5 py-2 rounded-md disable-highlight cursor-pointer whitespace-nowrap outline-none w-full 330size:w-auto"
                       >
                         <option value="Oldest">Oldest</option>
                         <option value="Latest">Latest</option>
@@ -192,7 +192,7 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                 </div>
             </div>
             <div className="mt-7">
-              <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>Color Legends</p>
+              <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-custom-dark-2'}`}>Color Legends</p>
 
               <div className="flex flex-wrap gap-x-5 gap-y-3 mt-2">
                
@@ -207,11 +207,11 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                     <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Already watched</p>
                 </div>
 
-
-                <div className="flex items-center gap-x-2">
+                 <div className="flex items-center gap-x-2">
                   <div className="h-[20px] w-[20px] bg-[#cac9c9] rounded-sm"></div>
-                  <p className={`text-sm custom-transition-duration${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Last watched</p>
+                  <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Not watch</p>
                 </div>
+
               </div>
             </div>
 
@@ -234,9 +234,9 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                       <div
                         className={`rounded text-xs 400size:text-sm py-2 flex justify-center 
                           disable-highlight cursor-pointer hover:opacity-90 active:scale-95
-                          ${(isWatched && lastWatched !== res?.number) ? 'bg-[#0063F2] text-white' : 
-                          lastWatched === res?.number ? 'bg-[#cac9c9] text-custom-dark-1 font-medium' : 
-                          'bg-[#122532] text-custom-gray-1'}
+                          ${(isWatched && lastWatched !== res?.number) ? 'bg-[#0063F2] text-gray-500 ' : 
+                          lastWatched === res?.number ? 'bg-[#cac9c9] text-black font-medium' : 
+                          'bg-[#122532] text-gray-500 '}
                           `}
                         key={res?.id}
                         onClick={() => {saveUserEpisodeData(anime?.id, res?.number); navigate(`/watch/${anime?.id}/${res?.id}`)}}
@@ -244,7 +244,7 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                         EP {res?.number} &nbsp;
                         <span className={
                           `text-xs 400size:text-sm uppercase 
-                          ${(isWatched && lastWatched !== res?.number) ? 'text-white' : lastWatched === res?.number ? 'text-custom-dark-1' : 'text-custom-gray-1'}`
+                          ${(isWatched && lastWatched !== res?.number) ? 'text-gray-500 ' : lastWatched === res?.number ? 'text-black' : 'text-gray-500 '}`
                           }
                         >
                           | {anime?.subOrDub}

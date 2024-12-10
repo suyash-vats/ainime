@@ -39,21 +39,21 @@ export const AnimeItem = ({id, title, image, genres, episodeNumber, releaseDate}
 
             {/* Name */}
             <p className={`text-base font-semibold mt-2 custom-transition-duration text-center 
-                sm:text-left ${isCheckedTheme ? 'text-white' : 'text-black'}`}
+                sm:text-left ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
             >
                 {title}
             </p>
 
             {/* Sub Details */}
-            <div className={`mt-1 flex gap-x-2 flex-wrap justify-center sm:justify-start ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
+            <div className={`mt-1 flex gap-x-2 flex-wrap justify-center sm:justify-start ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                 {genres ? 
-                    genres.map((genre, index) =>  index < 3 && <p key={index} className={`text-sm ${isCheckedTheme ? 'text-white' : 'text-black'}`}>• {genre}</p>)
+                    genres.map((genre, index) =>  index < 3 && <p key={index} className={`text-sm ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>• {genre}</p>)
                 :
                 episodeNumber ?
-                    <p className={`text-sm ${isCheckedTheme ? 'text-white' : 'text-black'}`}>• {episodeNumber} {episodeNumber === 1 ? 'episode' : 'episodes'}</p>
+                    <p className={`text-sm ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>• {episodeNumber} {episodeNumber === 1 ? 'episode' : 'episodes'}</p>
                 :
                 releaseDate &&
-                    <p className={`text-sm ${isCheckedTheme ? 'text-white' : 'text-black'}`}>• {releaseDate}</p>
+                    <p className={`text-sm ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>• {releaseDate}</p>
                 }
             </div>
         </div>

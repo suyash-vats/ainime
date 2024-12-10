@@ -37,7 +37,7 @@ export const Navbar = ( { active } : NavBarProps ) => {
           
             <p className={`text-xl 360size:text-2xl custom-font-moonrocks tracking-wide 
                 disable-highlight cursor-pointer active:scale-95 custom-transition-duration 
-                ${isCheckedTheme ? 'text-white' : 'text-black'}`
+                ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`
                }
                onClick={() => navigate("/")}
             >
@@ -53,7 +53,7 @@ export const Navbar = ( { active } : NavBarProps ) => {
                 <SearchIcon 
                     sx={{fontSize:'30px'}}
                     className={`cursor-pointer hover:opacity-80 active:scale-y-95 disable-highlight 
-                    scale-x-[-1] ${isCheckedTheme ? 'text-white' : 'text-black '}`}
+                    scale-x-[-1] ${isCheckedTheme ? 'text-gray-500 ' : 'text-black '}`}
                     onClick = {() => navigate("/Search")}
                 />
             </LightTooltip>

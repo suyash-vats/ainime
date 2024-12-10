@@ -1,47 +1,49 @@
-import { useEffect, useRef } from 'react';
-import Plyr from 'plyr';
-import 'plyr/dist/plyr.css'; 
+import { RefObject, useEffect } from "react"
 
 type PlayerProps = {
-  dataUrl: string; // Video URL
-  serverName: string; // Server name
-  frameStyle?: string; // Custom CSS class for styling
-};
+    dataUrl : string
+    serverName : string
+    iframeRef: RefObject<HTMLIFrameElement>
+    frameStyle : string
+}
 
-export const Player = ({ dataUrl, frameStyle }: PlayerProps) => {
-  const playerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (playerRef.current) {
-      // Initialize Plyr
-      const player = new Plyr(playerRef.current, {
-        
-        autoplay: false
-      });
-
-      // Cleanup Plyr instance on unmount
+export const Player = ({dataUrl, serverName, iframeRef, frameStyle} : PlayerProps) => {
+    // Dynamic Iframe Height
+    useEffect(() => {
+      const handleHeight = (event : MessageEvent) => {
+        if (iframeRef.current && event.data && event.data.type === 'iframeHeight') {
+          iframeRef.current.style.height = `${event.data.height}px`
+        }
+      }
+      window.addEventListener('message', handleHeight)
       return () => {
-        player.destroy();
-      };
+        window.removeEventListener('message', handleHeight)
+      }
+    }, [])
+
+    // Iframe Props
+    const iframeProps = {
+      allowFullScreen: true,
+      scrolling: "no",
+      ref: iframeRef,
+      title: "Video Player",
+      className: `w-[100%] xl:max-w-[45rem] h-auto min-h-[16.5rem] 580size:min-h-[17rem]
+                600size:min-h-[21rem] 700size:min-h-[24rem] 800size:min-h-[27rem]
+                900size:min-h-[30rem] 1000size:min-h-[32rem] 1100size:min-h-[36rem]
+                1220size:min-h-[38rem] xl:min-h-0 ${frameStyle}`
     }
-  }, []);
 
   return (
-    <div
-      ref={playerRef}
-      className={`plyr-container w-full xl:max-w-[45rem] ${frameStyle}`}
-    >
-      <video
-        controls
-        security='restricted'
-        data-plyr-config={`{
-          "type": "video",
-          "sources": [{ "src": "${dataUrl}", "type": "video/mp4" }]
-        }`}
-      >
-        {/* Fallback message */}
-        Your browser does not support the video tag.
-      </video>
-    </div>
-  );
-};
+    <>
+      <iframe
+        src={dataUrl} 
+        {...iframeProps}
+        sandbox={
+          serverName === "Filelions to be delete" || serverName === "Streamwish"
+            ? "allow-modals allow-orientation-lock allow-pointer-lock allow-presentation allow-scripts allow-top-navigation allow-forms"
+            : undefined
+        }
+      />
+    </>
+  )
+}

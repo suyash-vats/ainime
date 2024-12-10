@@ -1,3 +1,5 @@
+import { animeStore } from "../../store/animeStore";
+
 type ButtonProps = {
     value: string;
     bgColor: string;
@@ -7,8 +9,9 @@ type ButtonProps = {
 }
 
 export const Button: React.FC<ButtonProps> = ({ value, bgColor, shadeColor, icon, onClick }) => {
+    const {isCheckedTheme} = animeStore();
     return(
-        <button className={`text-white text-base rounded-3xl custom-shadow-button
+        <button className={`${isCheckedTheme ? 'text-gray-500' : 'text-black'} text-base rounded-3xl custom-shadow-button
             disable-highlight flex items-center justify-center sm:justify-start gap-x-3 pl-6 pr-2 py-1 ${bgColor}
             custom-transition-duration hover:opacity-80`
             }

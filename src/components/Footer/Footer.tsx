@@ -11,7 +11,7 @@ export const Footer = () => {
     >
         <div className="max-w-[80%] sm:max-w-none w-10/12 mx-auto flex flex-col items-center">
 
-            <p className={`text-xl 360size:text-3xl custom-font-moonrocks tracking-wide  ${isCheckedTheme ? 'text-white' : 'text-black'}
+            <p className={`text-xl 360size:text-3xl custom-font-moonrocks tracking-wide  ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}
                 disable-highlight cursor-pointer active:scale-95 custom-transition-duration`}
             >
                 ANIME
