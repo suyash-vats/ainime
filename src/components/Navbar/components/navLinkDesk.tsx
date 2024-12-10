@@ -12,7 +12,7 @@ export const NavlinksLarge = ({active} : NavLinksDeskProps) => {
     const navigate = useNavigate();
 
     return(
-        <div className={`hidden lg:flex gap-x-10  ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1 '}`}>
+        <div className={`hidden lg:flex gap-x-10  ${isCheckedTheme ? 'text-white' : 'text-black '}`}>
         {/* Home */}
         <li 
             className={`text-base list-none cursor-pointer hover:text-custom-gray-1 
@@ -54,7 +54,7 @@ export const NavlinksLarge = ({active} : NavLinksDeskProps) => {
             className={`text-base list-none cursor-pointer hover:text-custom-gray-1 
                 custom-transition-duration disable-highlight active:scale-95 font-normal
                 ${active === "My List" && isCheckedTheme ? 'text-white font-semibold' : active === "My List" && !isCheckedTheme ? 'font-semibold' : 'font-normal'}`}
-            onClick={() => navigate("/MyList")}
+            onClick={() => navigate("/Bookmarks")}
         >
             My List
         </li>

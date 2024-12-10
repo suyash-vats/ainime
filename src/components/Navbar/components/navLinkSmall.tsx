@@ -72,7 +72,7 @@ export const NavlinksSmall = ({anchorEl, open, handleClose} : NavLinkSmallProps)
 
         {/* My List */}
         <MenuItem 
-          onClick={() => {handleClose() ; navigate("/MyList")}}
+          onClick={() => {handleClose() ; navigate("/Bookmarks")}}
         >
           <div className={`text-base font-semibold text-custom-dark-2 min-w-[13rem] flex items-center gap-x-3`}>
             <ChecklistIcon sx={{fontSize:'25px'}}/>

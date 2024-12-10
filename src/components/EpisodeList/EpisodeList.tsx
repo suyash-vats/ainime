@@ -148,16 +148,16 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
 
 
       return(
-        <section className={`min-h-[14rem] w-full custom-transition-duration pb-10 lg:pb-14 ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+        <section className={`min-h-[14rem] w-full custom-transition-duration pb-10 lg:pb-14 ${isCheckedTheme ? 'bg-black' : 'bg-white'}`}>
         <div className={`max-w-[80%] sm:max-w-none w-10/12 mx-auto mt-16`}>
             <h1 className={`text-4xl font-semibold text-center lg:text-left pt-0
-              custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-4 ' : 'text-custom-dark-1'}`}
+              custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}
             >
               All Episodes
             </h1>
 
             <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-gray-1 pb-5 gap-x-10 mt-4 lg:mt-2">
-                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>
+                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>
                     Unwind and savor the pleasure of watching your favorite shows for a relaxing and enjoyable experience.
                 </p>
 
@@ -198,19 +198,19 @@ export const EpisodeList: React.FC<EpisodeListProps> = ({ anime, isLoading, myEp
                
                 <div className="flex items-center gap-x-2">
                   <div className="h-[20px] w-[20px] bg-[#122532] rounded-sm"></div>
-                  <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>- Not watch</p>
+                  <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Not watch</p>
                 </div>
 
       
                 <div className="flex items-center gap-x-2">
                     <div className="h-[20px] w-[20px] bg-[#0063F2] rounded-sm"></div>
-                    <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>- Already watched</p>
+                    <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Already watched</p>
                 </div>
 
 
                 <div className="flex items-center gap-x-2">
                   <div className="h-[20px] w-[20px] bg-[#cac9c9] rounded-sm"></div>
-                  <p className={`text-sm custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>- Last watched</p>
+                  <p className={`text-sm custom-transition-duration${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>- Last watched</p>
                 </div>
               </div>
             </div>

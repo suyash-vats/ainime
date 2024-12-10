@@ -28,7 +28,7 @@ export const SearchPage = () => {
         <Navbar/>
 
         {/* Search Container */}
-        <div className={`py-20 w-full custom-transition-duration ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+        <div className={`py-20 w-full custom-transition-duration ${isCheckedTheme ? 'bg-black' : 'bg-white'}`}>
             <div className="max-w-[80%] sm:max-w-none w-10/12 mx-auto">
 
                 {/* Search Input */}

@@ -147,7 +147,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
 
         <div className="mb-10 max-w-[80%] sm:max-w-none w-10/12 mx-auto">
             <p 
-                className={`text-lg float-left mb-4 cursor-pointer ${isCheckedTheme ? 'text-white' : 'text-custom-dark-1'}
+                className={`text-lg float-left mb-4 cursor-pointer ${isCheckedTheme ? 'text-white' : 'text-black'}
                 hover:underline hover:text-custom-blue-1 disable-highlight active:scale-95 custom-transition-duration`}
                 onClick={() => navigate(-1)}
             >
@@ -214,14 +214,14 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                 <div className="mt-5 xl:mt-0 xl:mb-4">
                     {/* Episode Number */
                     animeData?.type !== "MOVIE" &&
-                        <p className={`text-xl font-semibold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                        <p className={`text-xl font-semibold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             Episode {currentEpisode}
                         </p>
                     }
 
                     {/* Title */}
                     <p className={`text-2xl sm:text-3xl md:text-4xl mt-4 custom-font-rocksalt custom-transition-duration
-                        ${isCheckedTheme ? 'text-white' : 'text-custom-dark-1'}`
+                        ${isCheckedTheme ? 'text-white' : 'text-black'}`
                         }
                     >
                         {animeData?.title}
@@ -230,39 +230,39 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                     {/* Other Details */}
                     <div className="clear-both mt-10 flex flex-col gap-y-5">
                         {/* Rating */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             Rating :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                                 {fakeRating}
                             </span>
                         </p>
                         {/* Release Date */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             Year :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                                 {animeData?.releaseDate}
                             </span>
                         </p>
                         {/* Episodes */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             {animeData?.type !== "MOVIE" ? `Total Episodes` : `Type`} :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                                 {animeData?.type !== "MOVIE" ? animeData?.totalEpisodes : animeData?.type.charAt(0)+animeData?.type.slice(1).toLowerCase()}
                             </span>
                         </p>
                         {/* Status */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             Status :&nbsp;
-                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                            <span className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                                 {animeData?.status}
                             </span>
                         </p>
 
                         {/* Genres */}
-                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-1'}`}>
+                        <p className={`text-base custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                             Genres : &nbsp;
                             {animeData?.genres && animeData?.genres.map((genre : string, index : number) => (
-                                <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>
+                                <span key={index} className={`text-lg font-medium custom-transition-duration  ${isCheckedTheme ? 'text-white' : 'text-black'}`}>
                                     {genre}
                                     {index !== animeData?.genres.length - 1 && `, `}
                                 </span>
@@ -271,13 +271,13 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
 
                         {/* Available Servers */}
                         <div className="mt-6">
-                            <p className={`text-lg font-bold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-custom-dark-2'}`}>Available Servers</p>
+                            <p className={`text-lg font-bold custom-transition-duration ${isCheckedTheme ? 'text-white' : 'text-black'}`}>Available Servers</p>
                             <div className="flex flex-wrap mt-4 gap-5">
                                 {episodeData && episodeData.map((res, index : number) => (
                                 (res.name !== "Mp4Upload") &&
                                     <div key={index} className={`rounded text-xs 400size:text-sm py-2 px-5 flex justify-center disable-highlight 
                                         cursor-pointer hover:opacity-90 active:scale-95 text-white
-                                        ${serverName === res?.name ? 'bg-custom-blue-1' : 'bg-[#141D2B]'}
+                                        ${serverName === res?.name ? 'bg-blue-950' : 'bg-[#141D2B]'}
                                         `}
                                         onClick={() => { setServerName(res?.name); setUrlValue(res?.url) ; setLoader(!loader) }}
                                     >
@@ -307,7 +307,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                 :
                 <>
                     <p className={`text-base custom-transition-duration clear-both 
-                            ${isCheckedTheme ? 'text-custom-gray-2' : 'text-custom-dark-2'}`
+                            ${isCheckedTheme ? 'text-white' : 'text-black'}`
                         }
                     >
                         {displayedText}
@@ -318,7 +318,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
                         <p onClick={toggleDescription } 
                             className={`mt-5 xl:mt-3 text-base custom-transition-duration
                             w-[7.2rem] cursor-pointer hover:sm:text-custom-blue-1 hover:sm:underline
-                            active:scale-95 ${isCheckedTheme ? 'text-custom-gray-3' : 'text-custom-dark-2'}`}
+                            active:scale-95 ${isCheckedTheme ? 'text-white' : 'text-black'}`}
                         >
                             {shouldTrim && !showFullDescription && !showSeeLess ? 'Read more 👇' : 'See less ☝️'}
                         </p>

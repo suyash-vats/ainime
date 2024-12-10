@@ -17,7 +17,7 @@ function App() {
   const {isCheckedTheme} = animeStore()
 
   return (
-    <div className={`custom-transition-duration ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+    <div className={`custom-transition-duration ${isCheckedTheme ? 'bg-black' : 'bg-white'}`}>
       <ScrollToTop/>
       <Routes>
         {/* Main Pages */}

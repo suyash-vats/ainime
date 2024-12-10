@@ -31,18 +31,18 @@ export const Navbar = ( { active } : NavBarProps ) => {
     <nav 
         className={`px-7 lg:px-12 py-5 flex items-center justify-between z-10
             sticky inset-0 custom-shaddow-bottom custom-transition-duration 
-            ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}
+            ${isCheckedTheme ? 'bg-black' : 'bg-white'}`}
     >
         <div className="flex items-center gap-x-14">
           
             <p className={`text-xl 360size:text-2xl custom-font-moonrocks tracking-wide 
                 disable-highlight cursor-pointer active:scale-95 custom-transition-duration 
-                ${isCheckedTheme ? 'text-white' : 'text-custom-dark-1'}`
+                ${isCheckedTheme ? 'text-white' : 'text-black'}`
                }
                onClick={() => navigate("/")}
             >
                 ANIME
-                <span className="text-xl 360size:text-2xl text-custom-gray-1">STREAMER</span>
+                <span className={`text-xl 360size:text-2xl ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>STREAMER</span>
             </p>
 
           
@@ -53,7 +53,7 @@ export const Navbar = ( { active } : NavBarProps ) => {
                 <SearchIcon 
                     sx={{fontSize:'30px'}}
                     className={`cursor-pointer hover:opacity-80 active:scale-y-95 disable-highlight 
-                    scale-x-[-1] ${isCheckedTheme ? 'text-white' : 'text-custom-dark-1 '}`}
+                    scale-x-[-1] ${isCheckedTheme ? 'text-white' : 'text-black '}`}
                     onClick = {() => navigate("/Search")}
                 />
             </LightTooltip>

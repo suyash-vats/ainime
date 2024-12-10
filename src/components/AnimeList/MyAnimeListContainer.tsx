@@ -31,18 +31,18 @@ export const MyAnimeListContainer = ({ title, description, spacing } : MyAnimeLi
     }, [])
            
   return (
-    <section className={`min-h-[50rem] w-full custom-transition-duration pb-20 lg:pb-0 ${isCheckedTheme ? 'bg-custom-dark-1' : 'bg-white'}`}>
+    <section className={`min-h-[50rem] w-full custom-transition-duration pb-20 lg:pb-0 ${isCheckedTheme ? 'bg-black' : 'bg-white'}`}>
         <div className={`max-w-[80%] sm:max-w-none w-10/12 mx-auto relative ${spacing}`}>
 
             {/* Headers */}
             <h1 className={`text-4xl font-semibold text-center lg:text-left pt-10 lg:pt-0 
-              custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-4 ' : 'text-custom-dark-1'}`}
+              custom-transition-duration ${isCheckedTheme ? 'text-gray-400 ' : 'text-black'}`}
             >
               {title}
             </h1>
 
             <div className="flex flex-col lg:flex-row justify-between items-center border-b-2 border-custom-gray-1 pb-5 gap-x-10 mt-4 lg:mt-0">
-                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-custom-gray-1' : 'text-custom-dark-2'}`}>
+                <p className={`text-base  text-center lg:text-left custom-transition-duration ${isCheckedTheme ? 'text-gray-400' : 'text-black'}`}>
                   {description}
                 </p>
             </div>
@@ -55,7 +55,7 @@ export const MyAnimeListContainer = ({ title, description, spacing } : MyAnimeLi
                   :
                   myListDetails.length === 0 ?
                     <div className="w-full absolute">
-                      <p className={`text-base ${isCheckedTheme ? 'text-custom-gray-4 ' : 'text-custom-dark-2'}`}>You have no item in your list.</p>
+                      <p className={`text-base ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>You have no item in your list.</p>
                     </div>
                   :
                   myListDetails.map((res: ItemListType) => (
