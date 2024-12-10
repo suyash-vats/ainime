@@ -175,7 +175,7 @@ export const WatchPageSection = ( { animeData, episodeData, fakeRating, isLoadin
             <p 
                 className={`text-lg float-left mb-4 cursor-pointer ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}
                 hover:underline hover:text-custom-blue-1 disable-highlight active:scale-95 custom-transition-duration`}
-                onClick={() => navigate(-1)}
+                onClick={() => navigate('/')}
             >
                 &#8592; Go Back
             </p>
