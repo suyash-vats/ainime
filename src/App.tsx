@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify"
 import { NotFoundPage } from "./helpers/NotFoundPage"
 import "react-toastify/dist/ReactToastify.css"
 import { animeStore } from "./store/animeStore"
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const {isCheckedTheme} = animeStore()
@@ -51,6 +52,8 @@ function App() {
         pauseOnHover={false}
         theme='colored'
       />
+
+<Analytics/>
     </div>
   )
 }
