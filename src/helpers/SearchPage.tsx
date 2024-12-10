@@ -33,7 +33,7 @@ export const SearchPage = () => {
 
                 {/* Search Input */}
                 <div className="p-y-5">
-                    <div className="mx-auto rounded-lg bg-gray-200 p-5 w-full max-w-[40rem]">
+                    <div className={`mx-auto rounded-lg ${isCheckedTheme ? "bg-gray-500" : 'bg-gray-50'} p-5 w-full max-w-[40rem]`}>
                         <form onSubmit={searchAnime}>
                             <div className="flex">
                                 <div className="flex w-10 items-center justify-center rounded-tl-lg rounded-bl-lg border-r border-gray-200 bg-white p-5">
@@ -51,7 +51,7 @@ export const SearchPage = () => {
                                 <input 
                                     type="submit" 
                                     value="Search" 
-                                    className="bg-custom-gray-1 py-2 px-4 rounded-tr-lg rounded-br-lg text-gray-500  sm:hover:bg-blue-800 transition-colors cursor-pointer"
+                                    className={`${isCheckedTheme ? 'bg-black' : 'bg-blue-500'} py-2 px-4 rounded-tr-lg rounded-br-lg ${isCheckedTheme ? 'text-white' : 'text-black'}  sm:hover:bg-gray-500 transition-colors cursor-pointer`}
                                 />
                             </div>
                         </form>
