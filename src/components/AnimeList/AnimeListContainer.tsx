@@ -130,7 +130,7 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                     ${
                       isCheckedTheme
                         ? 'hover:border-custom-gray-1 hover:text-custom-gray-1 text-white border-white'
-                        : 'hover:border-custom-dark-1 hover:text-custom-dark-1 text-white border-black'
+                        : 'hover:border-custom-dark-1 hover:text-custom-dark-1 text-black border-black'
                     }`}
                     onClick={() => navigate(`/${type}`)}
                   >
