@@ -127,8 +127,11 @@ export const AnimeListContainer = ({ fetchCategory, type, title, description, sp
                   hasSeeAll ?
                   <button className={`mt-4 lg:mt-[-.50rem] whitespace-nowrap active:scale-95
                     border-2 px-5 py-2 rounded-full disable-highlight custom-transition-duration
-                    ${isCheckedTheme ? 'hover:border-custom-gray-1 hover:text-custom-gray-1 text-custom-gray-1 border-custom-gray-1' : 
-                    'hover:border-custom-dark-1 hover:text-custom-dark-1 text-custom-gray-1 border-custom-gray-1'}`}
+                    ${
+                      isCheckedTheme
+                        ? 'hover:border-custom-gray-1 hover:text-custom-gray-1 text-white border-white'
+                        : 'hover:border-custom-dark-1 hover:text-custom-dark-1 text-white border-black'
+                    }`}
                     onClick={() => navigate(`/${type}`)}
                   >
                       See All &#62;
