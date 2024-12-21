@@ -41,8 +41,8 @@ export const Navbar = ( { active } : NavBarProps ) => {
                }
                onClick={() => navigate("/")}
             >
-                ANIME
-                <span className={`text-xl 360size:text-2xl ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>STREAMER</span>
+              
+                <span className={`text-xl 360size:text-2xl ${isCheckedTheme ? 'text-gray-500 ' : 'text-black'}`}>アニタロ</span>
             </p>
 
           
